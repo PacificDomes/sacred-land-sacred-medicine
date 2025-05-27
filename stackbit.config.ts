@@ -1,16 +1,6 @@
-import { defineStackbitConfig } from "@stackbit/types";
-
-export default defineStackbitConfig({
-  modelExtensions: [
-    // Mark "Page" and "Post" as page models and define their URL structure
-    { name: "Page", type: "page", urlPath: "/{slug}" },
-    { name: "Post", type: "page", urlPath: "/blog/{slug}" }
-  ]
-});
 import path from 'path';
 import { defineStackbitConfig } from '@stackbit/types';
 import { SanityContentSource } from '@stackbit/cms-sanity';
-import { allModelExtensions } from './.stackbit/models';
 
 export default defineStackbitConfig({
     stackbitVersion: '~0.7.0',
@@ -49,5 +39,8 @@ export default defineStackbitConfig({
             dataset: process.env.SANITY_DATASET || 'production'
         })
     ],
-    modelExtensions: allModelExtensions
+    modelExtensions: [
+        { name: "Page", type: "page", urlPath: "/{slug}" },
+        { name: "Post", type: "page", urlPath: "/blog/{slug}" }
+    ]
 });
